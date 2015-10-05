@@ -1,0 +1,13 @@
+{
+  "name": "angular-drop-menu",
+  "homepage": "https://github.com/kshutkin/drop-menu",
+  "authors": [
+    "kostya80@gmail.com"
+  ],
+  "description": "AngularJS 1.x dropmenu helper directives",
+  "license": "MIT",
+  "main": "./drop-menu.js",
+  "dependencies": {
+    "angular": "1.x"
+  }
+}
