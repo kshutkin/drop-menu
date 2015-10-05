@@ -4,24 +4,22 @@ angular.module('drop-menu', [])
     .provider('dmConfig', function () {
 
         var defaults = {
-                options: {}
+                timeout: 500
             },
             userOptions = {};
 
         return {
             setConfig : function (options) {
-                userOptions.options = options;
+                angular.extend(userOptions, options);
             },
             $get: function () {
-                return {
-                    options: angular.extend({}, defaults.options, userOptions.options)
-                }
+                return angular.extend({}, defaults, userOptions);
             }
         }
     })
     .directive("dmClickToggle", ['$document', 'dmConfig', function($document, dmConfig) {
         return function(scope, element, attrs) {
-            var className = attrs.dmClickToggle || dmConfig.options.dropMenuActiveClass;
+            var className = attrs.dmClickToggle || dmConfig.activeClass;
 
             element.on('click', function (event) {
                 event.stopPropagation();
@@ -41,7 +39,8 @@ angular.module('drop-menu', [])
     }])
     .directive("dmHoverToggle", ['$document', '$timeout', 'dmConfig', function($document, $timeout, dmConfig) {
         return function(scope, element, attrs) {
-            var className = attrs.dmHoverToggle || dmConfig.options.dropMenuHoverClass,
+            var className = attrs.dmHoverToggle || dmConfig.hoverClass,
+                timeout = attrs.dmTimeout || dmConfig.timeout,
                 hoveredState = false;
 
             element.on('mouseenter', function () {
@@ -55,7 +54,7 @@ angular.module('drop-menu', [])
                     if (!hoveredState) {
                         element.removeClass(className);
                     }
-                }, 500);
+                }, timeout);
             });
         };
     }]);
