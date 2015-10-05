@@ -41,7 +41,7 @@ angular.module('drop-menu', [])
             }
         };
     }])
-    .directive("dmHoverToggle", ['$document', 'dmConfig', function($document, dmConfig) {
+    .directive("dmHoverToggle", ['$document', '$timeout', 'dmConfig', function($document, $timeout, dmConfig) {
         return function(scope, element, attrs) {
             var className = attrs.dmHoverToggle || dmConfig.options.dropMenuHoverClass,
                 hoveredState = false;
