@@ -4,7 +4,9 @@ angular.module('drop-menu', [])
     .provider('dmConfig', function () {
 
         var defaults = {
-                options: {}
+                options: {
+
+                }
             },
             userOptions = {};
 
@@ -21,17 +23,11 @@ angular.module('drop-menu', [])
     })
     .directive("dmClickToggle", ['$document', 'dmConfig', function($document, dmConfig) {
         return function(scope, element, attrs) {
-            var className = attrs.dmClickToggle || dmConfig.options.dropMenuActiveClass,
-                clickState = false;
+            var className = attrs.dmClickToggle || dmConfig.options.dropMenuActiveClass;
 
             element.on('click', function (event) {
-                clickState = !clickState;
                 event.stopPropagation();
-                if (clickState) {
-                    element.addClass(className);
-                } else {
-                    element.removeClass(className);
-                }
+                element.toggleClass(className);
             });
 
             $document.on('click', removeClass);
@@ -41,7 +37,6 @@ angular.module('drop-menu', [])
             });
 
             function removeClass() {
-                clickState = false;
                 element.removeClass(className);
             }
         };
