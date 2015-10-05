@@ -4,9 +4,7 @@ angular.module('drop-menu', [])
     .provider('dmConfig', function () {
 
         var defaults = {
-                options: {
-
-                }
+                options: {}
             },
             userOptions = {};
 
