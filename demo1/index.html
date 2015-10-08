@@ -13,6 +13,7 @@
                 position: absolute;
                 z-index: 1;
                 visibility: hidden;
+                white-space: nowrap;
             }
             .menu-toggle + .dropup-menu {
                 bottom: 2em;
@@ -69,6 +70,7 @@
             .menu {
                 position: relative;
                 margin-top: 10em;
+                display: inline-block;
             }
 
 
@@ -82,16 +84,41 @@
     </head>
 
     <body ng-app="DropMenuDemo">
-        <button class="menu-toggle" dm-click-toggle="active" dm-hover-toggle="active-alt"><i class="fa fa-caret-down"></i></button>
-        <ul class="dropdown-menu" dm-hover-toggle="active">
-            <li class="menu-item"><i class="fa fa-chevron-down"></i>First Option</li>
-            <li class="menu-item">Second Option</li>
-            <li class="menu-item">Third Option</li>
-        </ul>
 
+        Click to toggle:
         <div class="menu">
-            <button class="menu-toggle" dm-click-toggle="active" dm-hover-toggle="active-alt"><i class="fa fa-caret-up"></i></button>
-            <ul class="dropup-menu" dm-hover-toggle="active">
+            <button class="menu-toggle" dm-click-toggle="active"><i class="fa fa-caret-down"></i></button>
+            <ul class="dropdown-menu">
+                <li class="menu-item"><i class="fa fa-chevron-down"></i>First Option</li>
+                <li class="menu-item">Second Option</li>
+                <li class="menu-item">Third Option</li>
+            </ul>
+        </div>
+
+        Hover or click to toggle:
+        <div class="menu">
+            <button class="menu-toggle" dm-hover-toggle="active" dm-click-toggle="active-alt"><i class="fa fa-caret-down"></i></button>
+            <ul class="dropdown-menu" dm-hover-toggle="active" dm-click-toggle="active">
+                <li class="menu-item"><i class="fa fa-chevron-down"></i>First Option</li>
+                <li class="menu-item">Second Option</li>
+                <li class="menu-item">Third Option</li>
+            </ul>
+        </div>
+
+        Hover to toggle (dropup):
+        <div class="menu">
+            <button class="menu-toggle" dm-hover-toggle="active"><i class="fa fa-caret-up"></i></button>
+            <ul class="dropup-menu" dm-hover-toggle="active" dm-click-toggle="active">
+                <li class="menu-item"><i class="fa fa-chevron-down"></i>First Option</li>
+                <li class="menu-item">Second Option</li>
+                <li class="menu-item">Third Option</li>
+            </ul>
+        </div>
+
+        Hover to toggle (dropup, longer timeout):
+        <div class="menu">
+            <button class="menu-toggle" dm-hover-toggle="active" dm-timeout="2000"><i class="fa fa-caret-up"></i></button>
+            <ul class="dropup-menu" dm-hover-toggle="active" dm-click-toggle="active" dm-timeout="2000">
                 <li class="menu-item"><i class="fa fa-chevron-down"></i>First Option</li>
                 <li class="menu-item">Second Option</li>
                 <li class="menu-item">Third Option</li>
