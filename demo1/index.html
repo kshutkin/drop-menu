@@ -8,12 +8,22 @@
                 font: 13px/1.6em Verdana, Tahoma, Helvetica, sans-serif
             }
 
-            .menu-toggle + .dropdown-menu {
+            .menu-toggle + .dropdown-menu,
+            .menu-toggle + .dropup-menu {
                 position: absolute;
                 z-index: 1;
                 visibility: hidden;
             }
-            .menu-toggle.active + .dropdown-menu {
+            .menu-toggle + .dropup-menu {
+                bottom: 2em;
+                z-index: 100;
+            }
+            .menu-toggle.active + .dropdown-menu,
+            .menu-toggle.active + .dropup-menu,
+            .menu-toggle + .active.dropdown-menu,
+            .menu-toggle + .active.dropup-menu,
+            .menu-toggle.active-alt + .dropdown-menu,
+            .menu-toggle.active-alt + .dropup-menu {
                 visibility: visible;
                 border: 1px solid #d3d3d3;
                 padding: 5px 0;
@@ -22,7 +32,12 @@
                 box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
                 background-color: #e6eae9;
             }
-            .menu-toggle.active + .dropdown-menu .menu-item {
+            .menu-toggle.active + .dropdown-menu .menu-item,
+            .menu-toggle.active + .dropup-menu .menu-item,
+            .menu-toggle + .active.dropdown-menu .menu-item,
+            .menu-toggle + .active.dropup-menu .menu-item,
+            .menu-toggle.active-alt + .dropdown-menu .menu-item,
+            .menu-toggle.active-alt + .dropup-menu .menu-item {
                 appearance: normal;
                 list-style: none;
                 background-color: #e6eae9;
@@ -30,16 +45,33 @@
                 padding: 3px 20px;
                 position: relative;
             }
-            .menu-toggle.active + .dropdown-menu .menu-item:hover {
+            .menu-toggle.active + .dropdown-menu .menu-item:hover,
+            .menu-toggle.active + .dropup-menu .menu-item:hover,
+            .menu-toggle + .active.dropdown-menu .menu-item:hover,
+            .menu-toggle + .active.dropup-menu .menu-item:hover,
+            .menu-toggle.active-alt + .dropdown-menu .menu-item:hover,
+            .menu-toggle.active-alt + .dropup-menu .menu-item:hover {
                 background-color: #2a8edf;
                 color: white;
             }
-            .menu-toggle.active + .dropdown-menu .menu-item .fa {
+            .menu-toggle.active + .dropdown-menu .menu-item .fa,
+            .menu-toggle.active + .dropup-menu .menu-item .fa,
+            .menu-toggle + .active.dropdown-menu .menu-item .fa,
+            .menu-toggle + .active.dropup-menu .menu-item .fa,
+            .menu-toggle.active-alt + .dropdown-menu .menu-item .fa,
+            .menu-toggle.active-alt + .dropup-menu .menu-item .fa {
                 position: absolute;
                 left: 4px;
                 top: 50%;
                 margin-top: -6px;
             }
+
+            .menu {
+                position: relative;
+                margin-top: 10em;
+            }
+
+
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
         <script src="../drop-menu.js"></script>
@@ -50,12 +82,21 @@
     </head>
 
     <body ng-app="DropMenuDemo">
-        <button class="menu-toggle" dm-click-toggle="active"><i class="fa fa-caret-down"></i></button>
-        <ul class="dropdown-menu">
+        <button class="menu-toggle" dm-click-toggle="active" dm-hover-toggle="active-alt"><i class="fa fa-caret-down"></i></button>
+        <ul class="dropdown-menu" dm-hover-toggle="active">
             <li class="menu-item"><i class="fa fa-chevron-down"></i>First Option</li>
             <li class="menu-item">Second Option</li>
             <li class="menu-item">Third Option</li>
         </ul>
+
+        <div class="menu">
+            <button class="menu-toggle" dm-click-toggle="active" dm-hover-toggle="active-alt"><i class="fa fa-caret-up"></i></button>
+            <ul class="dropup-menu" dm-hover-toggle="active">
+                <li class="menu-item"><i class="fa fa-chevron-down"></i>First Option</li>
+                <li class="menu-item">Second Option</li>
+                <li class="menu-item">Third Option</li>
+            </ul>
+        </div>
     </body>
 
 </html>
