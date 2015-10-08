@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <style type="text/css">
+            body {
+                font: 13px/1.6em Verdana, Tahoma, Helvetica, sans-serif
+            }
+
+            .menu-toggle + .dropdown-menu {
+                position: absolute;
+                z-index: 1;
+                visibility: hidden;
+            }
+            .menu-toggle.active + .dropdown-menu {
+                visibility: visible;
+                border: 1px solid #d3d3d3;
+                padding: 5px 0;
+                margin: 2px 0 0;
+                border-radius: 4px;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.17);
+                background-color: #e6eae9;
+            }
+            .menu-toggle.active + .dropdown-menu .menu-item {
+                appearance: normal;
+                list-style: none;
+                background-color: #e6eae9;
+                cursor: pointer;
+                padding: 3px 20px;
+                position: relative;
+            }
+            .menu-toggle.active + .dropdown-menu .menu-item:hover {
+                background-color: #2a8edf;
+                color: white;
+            }
+            .menu-toggle.active + .dropdown-menu .menu-item .fa {
+                position: absolute;
+                left: 4px;
+                top: 50%;
+                margin-top: -6px;
+            }
+        </style>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <script src="../drop-menu.js"></script>
+        <script>
+            angular.module('DropMenuDemo', ['drop-menu']);
+        </script>
+        <title>Drop Menu Demo</title>
+    </head>
+
+    <body ng-app="DropMenuDemo">
+        <button class="menu-toggle" dm-click-toggle="active"><i class="fa fa-caret-down"></i></button>
+        <ul class="dropdown-menu">
+            <li class="menu-item"><i class="fa fa-chevron-down"></i>First Option</li>
+            <li class="menu-item">Second Option</li>
+            <li class="menu-item">Third Option</li>
+        </ul>
+    </body>
+
+</html>

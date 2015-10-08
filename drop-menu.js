@@ -9,7 +9,7 @@ angular.module('drop-menu', [])
             userOptions = {};
 
         return {
-            setConfig : function (options) {
+            setOptions : function (options) {
                 angular.extend(userOptions, options);
             },
             $get: function () {
